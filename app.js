@@ -10,7 +10,7 @@ const cors = require("cors")
 
 connect_db()
 const port = process.env.PORT || 2000
-const server = app.listen(port,()=>console.log(`running on ${port}`));
+const server = app.listen(port, '0.0.0.0', () => console.log(`running on ${port}`));
 
 const io = require("socket.io")(server,{
     pingTimeout: 60000,
