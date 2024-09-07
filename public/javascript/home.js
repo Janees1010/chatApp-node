@@ -4,12 +4,7 @@ let isGroupchat;
 let apiUrl ;
 
 
-fetch('/config')
-  .then(response => response.json())
-  .then(config => {
-    apiUrl = config.apiUrl;
-    console.log('API URL:', apiUrl);
-  })
+
 
 
 const socket = io("http://localhost:2000");
@@ -17,7 +12,6 @@ const socket = io("http://localhost:2000");
 socket.on("messageRecieved", (new_message) => {
   console.log(chat_id);
   console.log(new_message.chat._id);
-
   new_message.chat.users.forEach((user) => {
     if (user._id == new_message.sender._id) return;
   });
@@ -28,7 +22,7 @@ socket.on("messageRecieved", (new_message) => {
     const messagesDiv = document.getElementById("messages");
     const messageElement = document.createElement("div");
 
-    messageElement.innerHTML = `<span class="sender">${new_message.sender.username}</span><br><h5 class="message bg-primary">${new_message.content}</h5>`;
+    messageElement.innerHTML = `<span class="sender">${new_message.sender.username}</span><br><h5 class="sender-message">${new_message.content}</h5>`;
     messagesDiv.appendChild(messageElement);
   } else {
     // showInAppNotification(new_message);
@@ -53,7 +47,7 @@ const searchUsers = async(e)=>{
 
 async function fetchUsers(username) {
   try {
-    const response = await fetch("http://localhost:2000/user", {
+    const response = await fetch("http://localhost:2000/user",{
       method: "POST",
       headers: {
         "Content-Type": "application/json",
