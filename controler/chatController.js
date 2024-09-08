@@ -1,4 +1,6 @@
-const Chat = require("../models/chat")
+const Chat = require("../models/chat");
+const User = require("../models/usermodel");
+// const Message = require("../models/messagemodel");
 
 const createChat = async (req,res)=>{
     //   let logedin_user = req.user;

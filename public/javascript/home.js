@@ -22,7 +22,7 @@ socket.on("messageRecieved", (new_message) => {
     const messagesDiv = document.getElementById("messages");
     const messageElement = document.createElement("div");
 
-    messageElement.innerHTML = `<span class="sender">${ new_message.is_groupchat ? new_message.sender.username : ""}</span><br><h5 class="sender-message">${new_message.content}</h5>`;
+    messageElement.innerHTML = `<span class="sender">${ new_message.chat.is_groupchat ? new_message.sender.username : ""}</span><br><h5 class="sender-message">${new_message.content}</h5>`;
     messagesDiv.appendChild(messageElement);
   } else {
     // showInAppNotification(new_message);
@@ -203,7 +203,7 @@ async function createChat(_id) {
     });
     if (response) {
       closeSearch();
-    }
+    } 
   } catch (err) {
     console.log(err);
   }

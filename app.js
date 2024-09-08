@@ -14,12 +14,12 @@ const server = app.listen(port, '0.0.0.0', () => console.log(`running on ${port}
 
 const io = require("socket.io")(server,{
     pingTimeout: 60000,
-    cors:{
-        origin: "http://52.66.241.139:2000"
+    cors:{  
+        origin: "http://52.66.241.139:2000" 
     }
        
-}) 
-io.on("connection",(socket)=>{
+})  
+io.on("connection",(socket)=>{ 
 
     socket.on("setup",(user_id)=>{
         socket.join(user_id)

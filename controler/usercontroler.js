@@ -21,13 +21,12 @@ require("dotenv").config()
       if(response){
           const token  = jwt.sign({_id:response._id,username:response.username},process.env.SECRET_KEY)
           res.cookie('token',token,{httpOnly:true, maxAge: 3600000})
-          res.redirect('/')
-          return res.status(200).json(response)
+          res.render('home',{user:response.username})
       }
    }catch(err){
       console.log(err);
       return res.status(500).json(err.message) 
-   }
+   } 
 }
 
 const signin = async (req,res)=>{

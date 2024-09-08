@@ -2,7 +2,7 @@
 const Message = require("../models/messagemodel");
 const User = require("../models/usermodel");
 const Chat = require("../models/chat");
-const chat = require("../models/chat");
+
 
 const addingMessage = async(req,res)=>{
 
