@@ -7,7 +7,7 @@ let apiUrl ;
 
 
 
-const socket = io("http://52.66.241.139:2000");
+const socket = io("http://13.127.249.154:2000");
 
 socket.on("messageRecieved", (new_message) => {
   console.log(chat_id);
@@ -47,7 +47,7 @@ const searchUsers = async(e)=>{
 
 async function fetchUsers(username) {
   try {
-    const response = await fetch("http://52.66.241.139:2000/user",{
+    const response = await fetch("http://13.127.249.154:2000/user",{
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -119,7 +119,7 @@ async function openMessageBox(_id, username, i, is_groupchat, groupName,groupAdm
 
   console.log(groupAdmin,"groupAdmin");
 
-  const response = await fetch("http://52.66.241.139:2000/getid",{
+  const response = await fetch("http://13.127.249.154:2000/getid",{
     method:"GET"
   })
 
@@ -171,7 +171,7 @@ async function openMessageBox(_id, username, i, is_groupchat, groupName,groupAdm
 
 const fetchMessages = async (_id) => {
   try {
-    const response = await fetch(`http://52.66.241.139:2000/message/${_id}`, {
+    const response = await fetch(`http://13.127.249.154:2000/message/${_id}`, {
       method: "get",
     });
     const data = await response.json();
@@ -194,7 +194,7 @@ const fetchMessages = async (_id) => {
 
 async function createChat(_id) {
   try {
-    const response = await fetch("http://52.66.241.139:2000/chat/chats", {
+    const response = await fetch("http://13.127.249.154:2000/chat/chats", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -211,7 +211,7 @@ async function createChat(_id) {
 
 const fetchChat = async () => {
   try {
-    const response = await fetch("http://52.66.241.139:2000/chat/chats", {
+    const response = await fetch("http://13.127.249.154:2000/chat/chats", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -240,7 +240,7 @@ const sendingMessage = async (e) => {
     updateUIWithMessage(message);
 
     try {
-      const response = await fetch("http://52.66.241.139:2000/message", {
+      const response = await fetch("http://13.127.249.154:2000/message", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -350,7 +350,7 @@ const createGroup = async (e) => {
     };
 
     const body = JSON.stringify(requestBody);
-    const response = await fetch("http://52.66.241.139:2000/chat/groupchat", {
+    const response = await fetch("http://13.127.249.154:2000/chat/groupchat", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -369,7 +369,7 @@ const deleteGroupchat = async()=>{
   try {
     console.log("deleting");
     
-    const response  = await fetch("http://52.66.241.139:2000/chat/deletegroupchat", {
+    const response  = await fetch("http://13.127.249.154:2000/chat/deletegroupchat", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -389,7 +389,7 @@ const leaveGroupchat = async()=>{
   try {
     console.log(chat_id);
     
-    const response  = await fetch("http://52.66.241.139:2000/chat/leavegroupchat", {
+    const response  = await fetch("http://13.127.249.154:2000/chat/leavegroupchat", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

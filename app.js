@@ -15,7 +15,7 @@ const server = app.listen(port, '0.0.0.0', () => console.log(`running on ${port}
 const io = require("socket.io")(server,{
     pingTimeout: 60000,
     cors:{  
-        origin: "*" 
+        origin: "http://13.127.249.154:2000" 
     }
        
 })  
@@ -55,11 +55,7 @@ io.on("connection",(socket)=>{
      })
 })
  
-app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).send('Something broke!');
-  });
-  
+
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))
 app.use(cookieParser())
@@ -69,9 +65,9 @@ app.use(express.static(path.join(__dirname,"public")))
 app.use(cors());
 
 
-  app.get('/config', (req, res) => {
-    res.json({ apiUrl: process.env.API_URL || 'http://localhost:2000' });
-  });
+//   app.get('/config', (req, res) => {
+//     res.json({ apiUrl: process.env.API_URL || 'http://localhost:2000' });
+//   });
 
  app.use("/",userRoutes)
  app.use("/message",messageRoutes)
