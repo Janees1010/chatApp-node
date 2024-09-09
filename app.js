@@ -9,13 +9,13 @@ const chatRoutes = require("./routes/chat")
 const cors = require("cors")
 
 connect_db()
-const port = process.env.PORT || 2000
+const port = process.env.PORT || 80 
 const server = app.listen(port, '0.0.0.0', () => console.log(`running on ${port}`));
 
 const io = require("socket.io")(server,{
     pingTimeout: 60000,
     cors:{  
-        origin: "http://13.127.249.154:2000" 
+        origin: "http://13.127.249.154:80" 
     }
        
 })  
